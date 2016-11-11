@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://admin:password@ds147777.mlab.com:47777/training',['tasks']);
+var db = mongojs('mongodb://'+process.env.DB_USER+':'+process.env.DB_PASSWORD+'@ds147777.mlab.com:47777/training',['tasks']);
 
 router.get('/tasks', function(req,res,next){
     db.tasks.find(function(err,tasks){
